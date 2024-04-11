@@ -34,6 +34,9 @@ void setup()
           Serial.println("Error occurred during initializing ESP");
           return;
       }
+      
+      esp_now_register_recv_cb(receivedDataCallBack);
+      esp_now_register_send_cb(sentDataCallBack);
 
      peerblock:
      if (esp_now_add_peer(&peerInfo) != ESP_OK)
@@ -42,7 +45,7 @@ void setup()
          delay(2000);
          Serial.println("Restarting ESP-NOW protocol.....");
          ESP.restart();
-         goto peerblock; /**recalling peerblock to recheck if peering was successful**/
+         goto peerblock; /**calling peerblock to recheck if peering was successful**/
      }
    
 }
@@ -53,5 +56,4 @@ void loop()
         btn_IsPressed = !digitalRead(STATUS_BUTTON);
         if (btn_IsPressed)
             broadCast("on");
-                    
 }

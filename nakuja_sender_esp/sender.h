@@ -15,8 +15,8 @@ typedef struct struct_packet
   char message[100];
 }msg_packet;
 
-void onDataSent(const uint8_t *mac_address, esp_now_send_status_t status);
-void onReceiveData(const uint8_t *mac_address, const uint8_t *incomingData, int len);
+void sentDataCallBack(const uint8_t *mac_address, esp_now_send_status_t status);
+void receivedDataCallBack(const uint8_t *mac_ddress, const uint8_t *incomingData, int dataLen);
 void Buzzer(const int *pin, char *command);
 void broadCast(const char *message);
 
