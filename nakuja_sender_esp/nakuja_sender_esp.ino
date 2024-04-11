@@ -17,7 +17,6 @@ const int BUZZER_PIN = 18;
 
 /** button configurations **/
 int btn_IsPressed = HIGH;
-int lastBtnState = LOW;
 
 void setup()
 {
