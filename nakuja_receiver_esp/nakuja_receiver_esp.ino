@@ -14,26 +14,16 @@
 
 HX711 scale;
 
-void setup() {
-  
+void setup()
+{
     Serial.begin(115200);
-    scale.begin(DOUT_PIN, CLK_PIN);
-    unsigned long t_ = 0;
-    
+    scale.begin(DOUT_PIN, CLK_PIN); 
 }
 
-void loop() {
-        if (scale.is_ready())
-        {
-                long reading = scale.read();
-                float force = (map(reading, 0, 4096, 0, 800) - 9225) / 100;
-                Serial.println("Weight: " + String(force));
-          }
-          else
-          {
-                Serial.println("HX711 not ready");
-            }
-
-           delay(1000);
-
+void loop() 
+{
+    float lcell_readings;
+    lcell_readings = getLoadCellData(scale);
+    Serial.print("Weight Applied: " + String(lcell_readings) + " N");
 }
+
