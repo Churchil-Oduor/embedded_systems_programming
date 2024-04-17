@@ -9,10 +9,8 @@ float getLoadCellData(HX711 &scale)
 {
       long reading;
       float force;
-      int time_interval_to_return_data; // in millis
-
-      time_interval_to_return_data = 1000;
-
+   
+      
       if (scale.is_ready())
         {
                 reading = scale.read();
@@ -22,7 +20,11 @@ float getLoadCellData(HX711 &scale)
         else
         {
               return (0);
-        }
-
-           delay(time_interval_to_return_data);
+        }        
 }
+
+
+
+
+
+
